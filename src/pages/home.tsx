@@ -1,11 +1,20 @@
 import { Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "../components/ui/card";
 import { env } from "../lib/env";
 
 export function Home() {
   return (
     <main className="min-h-screen bg-[#fff7ec] flex flex-col">
+      {/* HEADER & NAVBAR */}
+      {/* Optionally import and use layout Header/Nav components if present */}
+
       {/* HERO */}
       <header
         className="relative w-full text-center px-4 pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden bg-gradient-to-b from-[#ffe3ba] to-[#fff7ec]"
@@ -165,6 +174,36 @@ export function Home() {
             <Button asChild size="lg" className="bg-[#ff6b4a] px-10 text-white hover:bg-[#d94828] focus:bg-[#d94828] focus:ring-2 focus:ring-[#ffad84] shadow-lg transition">
               <Link to="/">Book a Table</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT / HISTORY BLOCK */}
+      <section
+        className="w-full py-16 px-4 border-b border-[#e5d6c3] bg-[#fff7ec]"
+        aria-labelledby="about-history"
+      >
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 id="about-history" className="text-2xl font-bold text-[#d94828] mb-3">
+              Our Story
+            </h2>
+            <p className="text-[#6f5b4a] text-base mb-4">
+              Founded by culinary lovers who believe food should inspire, not just satisfy.
+              Every dish is a celebration of vibrant flavors and cherished memories, served with warmth and modern hospitality.
+            </p>
+            <div className="space-y-1">
+              <p className="text-[#26170e] text-base font-semibold">Est. 2024 · Family Owned</p>
+              <p className="text-[#bfa682] text-sm">Chef Maria & Team</p>
+            </div>
+          </div>
+          <div className="flex justify-center md:justify-end">
+            <img
+              src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
+              alt="Restaurant founders"
+              className="rounded-xl shadow-lg w-64 h-56 object-cover border-4 border-[#f1ddc9] bg-white"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
