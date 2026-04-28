@@ -8,8 +8,69 @@ import {
   CardDescription,
 } from "../components/ui/card";
 import { env } from "../lib/env";
+import { useState, useEffect } from "react";
 
 export function Home() {
+  // Error state for 502 Bad Gateway
+  const [gatewayError, setGatewayError] = useState(false);
+
+  // Demo logic: detect 502 via a flag in localStorage or query param
+  // (In real use, error would be set on failed fetch or context)
+  useEffect(() => {
+    // Example: listen for a flag in location.hash or window for demo purposes
+    if (
+      typeof window !== "undefined" &&
+      (window.location.search.includes("error=502") ||
+        window.location.hash.includes("error=502"))
+    ) {
+      setGatewayError(true);
+    }
+  }, []);
+
+  if (gatewayError) {
+    return (
+      <main className="flex items-center justify-center min-h-screen bg-gradient-to-b from-[#fff7ec] to-[#fff3ef] px-4">
+        <section className="mx-auto w-full max-w-lg rounded-2xl border border-red-200 bg-white p-10 shadow text-center">
+          <div className="flex flex-col items-center gap-3">
+            <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#ff4453]/10 shadow">
+              <svg width={42} height={42} viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="20" fill="#ff4453" opacity="0.08"/>
+                <path d="M20 13v8m0 4h.01" stroke="#ff4453" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+            <h1 className="text-2xl font-bold text-[#b1001a] mt-2">502: Bad Gateway</h1>
+            <p className="text-[#5b262b] mt-2 mb-3">
+              The service is temporarily unreachable. This is usually a backend or network issue.
+            </p>
+            <div className="flex flex-col items-center gap-2 w-full">
+              <Button
+                variant="outline"
+                className="border-[#ff4453] text-[#b1001a] hover:bg-[#ffe8e8] font-semibold px-6"
+                onClick={() => window.location.reload()}
+              >
+                Retry
+              </Button>
+              <Button
+                asChild
+                className="bg-[#ff4453] px-6 text-white font-semibold hover:bg-[#b1001a]"
+              >
+                <Link to="/">Back Home</Link>
+              </Button>
+            </div>
+            <p className="text-xs text-[#df979f] mt-4">
+              <span>If the problem persists:</span>
+              <br />
+              <span>
+                1. Check your Internet connection.<br/>
+                2. Contact support or try again later.
+              </span>
+            </p>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#fff7ec] to-[#fff3ef] flex flex-col">
       {/* HERO */}
