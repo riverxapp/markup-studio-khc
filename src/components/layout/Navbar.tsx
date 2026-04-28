@@ -3,18 +3,27 @@ import { cn } from "../../lib/utils";
 
 function navLinkClass({ isActive }: { isActive: boolean }) {
   return cn(
-    "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+    "rounded-full px-5 py-2 text-base font-semibold tracking-tight transition-colors",
     isActive
-      ? "bg-[#26170e] text-white"
-      : "text-[#6f5b4a] hover:bg-[#fff2e2] hover:text-[#26170e]"
+      ? "bg-[#ff6b4a] text-white shadow-md" // active: bold red pill
+      : "text-[#d94828] hover:bg-[#ffe7cf] hover:text-[#26170e]"
   );
 }
 
 export function Navbar() {
   return (
-    <nav className="flex items-center gap-2">
-      <NavLink to="/" className={navLinkClass} end>
-        Home
+    <nav className="flex items-center gap-2 bg-white/70 px-4 py-2 rounded-xl shadow-sm border border-[#ffe7cf]">
+      <NavLink to="#menu" className={navLinkClass} end>
+        Menu
+      </NavLink>
+      <NavLink to="#about-history" className={navLinkClass}>
+        About
+      </NavLink>
+      <NavLink to="#testimonials" className={navLinkClass}>
+        Reviews
+      </NavLink>
+      <NavLink to="/" className={navLinkClass}>
+        Reservation
       </NavLink>
     </nav>
   );
