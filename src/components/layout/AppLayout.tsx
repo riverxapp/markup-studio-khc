@@ -4,11 +4,15 @@ import { Header } from "./Header";
 
 export function AppLayout() {
   return (
-    <div className="relative flex min-h-screen flex-col overflow-x-hidden bg-[#fffaf2] text-[#26170e]">
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[28rem] bg-[radial-gradient(circle_at_top_left,_rgba(255,157,122,0.24),_transparent_55%),radial-gradient(circle_at_top_right,_rgba(255,107,74,0.18),_transparent_45%)]" />
+    <div className="relative flex min-h-screen flex-col overflow-x-hidden bg-[#fff7ec] text-[#26170e]">
+      {/* Decorative large soft red gradients for restaurant atmosphere */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(1200px_42rem_at_60%_-12%,rgba(255,107,74,0.11)_0%,_rgba(255,173,132,0.18)_32%,_transparent_92%),radial-gradient(900px_35rem_at_-20%_5%,rgba(255,173,132,0.10)_0%,_rgba(255,107,74,0.09)_22%,_transparent_90%)]" />
       <Header />
-      <main className="mx-auto w-full max-w-[1440px] flex-1 px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
-        <Outlet />
+      <main className="mx-auto w-full max-w-[1440px] flex-1 px-0">
+        {/* Consistent containment for hero and landing sections */}
+        <div className="w-full flex flex-col min-h-screen">
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </div>
