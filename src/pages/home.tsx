@@ -8,6 +8,9 @@ import {
   CardDescription,
 } from "../components/ui/card";
 import { env } from "../lib/env";
+// Optionally import Header and Footer from layout if available
+// import { Header } from "../components/layout/Header";
+// import { Footer } from "../components/layout/Footer";
 
 export function Home() {
   return (
